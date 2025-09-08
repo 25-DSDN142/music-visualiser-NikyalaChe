@@ -1,3 +1,6 @@
+// HEY! Song load at end. Warning of jumpscare
+// maybe epeilepy warning 
+
 let circleX = 910;
 let circleSize;
 
