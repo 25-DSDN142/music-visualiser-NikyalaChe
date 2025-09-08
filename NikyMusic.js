@@ -8,12 +8,13 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
   stroke (112, 17, 74); //dark purple ring
   strokeWeight(10);
-  fill(0, 0, 0); //black center
+  noFill();
+
 
 // fill(112, 17, 74); //dark pink
 
  ellipse(circleX,540,circleSize); 
- 
+ ellipse(circleX, 540, circleSize-50)
  
 
  //circleX = circleX + 1;
