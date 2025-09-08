@@ -4,6 +4,8 @@ let circleSize;
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
   background(0); //black backgound
+  //colourMode(HSB); 
+
   circleSize = drum*7; //drum
 
   stroke (112, 17, 74); //dark purple ring
