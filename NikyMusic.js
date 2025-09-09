@@ -23,7 +23,8 @@ let numRings = 10; //number of rings displayed inside oneanother
 let ringSpacing = 50; //space between
 
 let ring1 = color(112, 17, 74); //dark purple
-let ring2 = color(255, 0, 85); //dark pink
+//let ring2 = color(255, 0, 85); //dark pink
+let ring2 = color(166, 227, 180); //light neon green
 
 let colorDriver = map(bass, 0, 100, 0, 1);
 
@@ -34,6 +35,7 @@ fill(interColor)
 for (let i = 0; i < numRings; i++) {
   ellipse(circleX, 540, circleSize - i * ringSpacing);
 }
+
  let numPoints = 10; //number of points for the star
 //draw star around the rings
 beginShape();
