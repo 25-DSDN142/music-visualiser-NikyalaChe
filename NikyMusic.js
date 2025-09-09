@@ -41,16 +41,7 @@ stroke(166, 227, 180); //light neon green
 strokeWeight(5);
 noFill();
 
-//copilot helped me here 
-for (let i = 0; i < numPoints; i++) {
-  let angle = map(i, 0, numPoints, 0, TWO_PI);
-  let x = circleX + cos(angle) * (circleSize / 2 + 10);
-  let y = 540 + sin(angle) * (circleSize / 2 + 10);
-  vertex(x, y);
-}
-endShape(CLOSE);
 
-//copilot code ends here
 
 }
 
