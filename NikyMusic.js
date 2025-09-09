@@ -36,14 +36,11 @@ for (let i = 0; i < numRings; i++) {
   ellipse(circleX, 540, circleSize - i * ringSpacing);
 }
 
- let numPoints = 10; //number of points for the star
-//draw star around the rings
-beginShape();
-stroke(166, 227, 180); //light neon green
-strokeWeight(5);
-noFill();
+//draw a star behind but around the circle rings
 
-
+  fill(255, 238, 110); //yellow
+  stroke(166, 227, 180); //light neon green
+  strokeWeight(10);
 
 
 
