@@ -50,8 +50,23 @@ for (let i = 0; i < numRings; i++) {
 
 if (drum > 82) { 
 
-let numRings2 = 10; //numbers of rings for corner circle
-let ringSpacing2 = 50; //space between 
+//switch to RGB for the rings
+colorMode(RGB, 255, 255, 255);
+
+
+//color changing with bass
+//let ring1 = color(255,255,254); //white 
+let ring1 = color(255, 0, 85); //warm pink 
+let ring2 = color(245, 155, 72); //light orange
+
+let colorDriver = map(vocal, 0, 100, 0, 1);
+let interColor = lerpColor(ring1, ring2, colorDriver); //middle colour between purple and pink
+
+fill(interColor)
+stroke(ring1);
+
+let numRings2 = 20; //numbers of rings for corner circle
+let ringSpacing2 = 40; //space between 
 
 //Ai helped me create circles in each corner
 // Array of corner positions: [x, y]
@@ -71,14 +86,12 @@ for (let c = 0; c < corners.length; c++) {
   }
 //ai code ended
 
-//draw circle in top left corner
+//draw circle in top left corner //code used to make one circle in top left corner
 //for (let i = 0; i < numRings2; i++) {
 //  ellipse(circleX2, circleX2, circleSize - i * ringSpacing2);
+  }
+ }
 
-
-}
-
-}
 
    
 }

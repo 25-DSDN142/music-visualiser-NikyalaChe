@@ -16,6 +16,8 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
    background(hueValue, satValue, brightValue); //set background colour based on the bass
 
+   //245, 155, 72 //light orange
+   //255, 238, 110 //light yellow
 
   //console.log(drum);
   circleSize = drum * 10; //drum
@@ -24,8 +26,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   strokeWeight(10);
   noFill();
 
-// fill(112, 17, 74); //dark pink
-
+// fill(112, 17, 74); //dark pink - code color option
 //switch to RGB for the rings
 colorMode(RGB, 255, 255, 255);
 
@@ -49,7 +50,6 @@ for (let i = 0; i < numRings; i++) {
 
 }
 
-
 let numRings2 = 10; //numbers of rings for corner circle
 let ringSpacing2 = 50; //space between 
 
@@ -58,6 +58,33 @@ for (let i = 0; i < numRings2; i++) {
   ellipse(circleX2, circleX2, circleSize - i * ringSpacing2);
 
 }
+
+if (drum > 82) { 
+
+let numRings2 = 20; //numbers of rings for corner circle
+let ringSpacing2 = 40; //space between 
+
+//Ai helped me create circles in each corner
+// Array of corner positions: [x, y]
+let corners = [
+  [circleX2, circleX2], // top-left
+  [width - circleX2, circleX2], // top-right
+  [circleX2, height - circleX2], // bottom-left
+  [width - circleX2, height - circleX2] // bottom-right
+];
+
+// Draw rings in all four corners
+for (let c = 0; c < corners.length; c++) {
+  let x = corners[c][0];
+  let y = corners[c][1];
+  for (let i = 0; i < numRings2; i++) {
+    ellipse(x, y, circleSize - i * ringSpacing2);
+  }
+//ai code ended
+  }
+ }
+
+
 
 
 }
