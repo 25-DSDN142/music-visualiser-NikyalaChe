@@ -1,15 +1,18 @@
-// HEY! Song load at end. Warning of jumpscare
-// maybe epeilepy warning 
 
 let circleX = 910;
 let circleSize;
 
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
-  background(0); //black backgound
+   colorMode(HSB, 360, 100, 100); //make HSB color mode for smooth transitions
+   let hueValue = map(bass, 0, 100, 240, 360); //map bass to hue value from blue to pink
+   background (hueValue, 80, 100); //set the background color based on the bass
+
+   
+   //background(0); //black backgound
   //colorMode(HSB); 
 
-  //console.log(drum);
+  console.log(drum);
   circleSize = drum * 10; //drum
 
   stroke(112, 17, 74); //dark purple ring
@@ -30,6 +33,7 @@ let ring2 = color(166, 227, 180); //light neon green
 let colorDriver = map(bass, 0, 100, 0, 1);
 
 let interColor = lerpColor(ring1, ring2, colorDriver); //middle colour between purple and pink
+
 fill(interColor)
 
 
@@ -41,5 +45,5 @@ for (let i = 0; i < numRings; i++) {
 
 
 
+   
 }
-
