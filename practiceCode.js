@@ -48,6 +48,8 @@ for (let i = 0; i < numRings; i++) {
 
 }
 
+if (drum > 82) { 
+
 let numRings2 = 10; //numbers of rings for corner circle
 let ringSpacing2 = 50; //space between 
 
@@ -76,6 +78,7 @@ for (let c = 0; c < corners.length; c++) {
 
 }
 
+}
 
    
 }
