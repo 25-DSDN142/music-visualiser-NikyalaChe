@@ -13,12 +13,6 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
    background(hueValue, satValue, brightValue); //set background colour based on the bass
 
-   //let hueValue = map(bass, 0, 100, 240, 360); //map bass to hue value from blue to pink
-   //background (hueValue, 80, 100); //set the background color based on the bass
-
-   
-   //background(0); //black backgound
-  //colorMode(HSB); 
 
   //console.log(drum);
   circleSize = drum * 10; //drum
@@ -28,7 +22,6 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   noFill();
 
 // fill(112, 17, 74); //dark pink
-
 
 //switch to RGB for the rings
 colorMode(RGB, 255, 255, 255);
@@ -54,6 +47,14 @@ for (let i = 0; i < numRings; i++) {
 
 }
 
+let numRings2 = 5; //numbers of rings for corner circle
+let ringSpacing2 = 100; //space between 
+
+//draw circle in top left corner
+for (let i = 0; i < numRings2; i++) {
+  ellipse(150, 150, circleSize - i * ringSpacing2);
+
+}
 
 
 
