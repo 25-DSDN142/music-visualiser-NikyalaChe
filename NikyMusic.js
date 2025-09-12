@@ -50,4 +50,14 @@ for (let i = 0; i < numRings; i++) {
 }
 
 
+let numRings2 = 10; //numbers of rings for corner circle
+let ringSpacing2 = 50; //space between 
+
+//draw circle in top left corner
+for (let i = 0; i < numRings2; i++) {
+  ellipse(circleX2, circleX2, circleSize - i * ringSpacing2);
+
+}
+
+
 }

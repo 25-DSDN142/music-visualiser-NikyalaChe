@@ -1,5 +1,5 @@
 
-let circleX = 910;
+let circleX = 960;
 let circleX2 = 150;
 let circleSize;
 
@@ -15,7 +15,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
    background(hueValue, satValue, brightValue); //set background colour based on the bass
 
 
-  //console.log(drum);
+  console.log(drum);
   circleSize = drum * 10; //drum
 
   stroke(112, 17, 74); //dark purple ring
@@ -51,13 +51,30 @@ for (let i = 0; i < numRings; i++) {
 let numRings2 = 10; //numbers of rings for corner circle
 let ringSpacing2 = 50; //space between 
 
+//Ai helped me create circles in each corner
+// Array of corner positions: [x, y]
+let corners = [
+  [circleX2, circleX2], // top-left
+  [width - circleX2, circleX2], // top-right
+  [circleX2, height - circleX2], // bottom-left
+  [width - circleX2, height - circleX2] // bottom-right
+];
+
+// Draw rings in all four corners
+for (let c = 0; c < corners.length; c++) {
+  let x = corners[c][0];
+  let y = corners[c][1];
+  for (let i = 0; i < numRings2; i++) {
+    ellipse(x, y, circleSize - i * ringSpacing2);
+  }
+//ai code ended
+
 //draw circle in top left corner
-for (let i = 0; i < numRings2; i++) {
-  ellipse(circleX2, circleX2, circleSize - i * ringSpacing2);
+//for (let i = 0; i < numRings2; i++) {
+//  ellipse(circleX2, circleX2, circleSize - i * ringSpacing2);
+
 
 }
-
-
 
 
    
