@@ -12,7 +12,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
    //background(0); //black backgound
   //colorMode(HSB); 
 
-  console.log(drum);
+  //console.log(drum);
   circleSize = drum * 10; //drum
 
   stroke(112, 17, 74); //dark purple ring
