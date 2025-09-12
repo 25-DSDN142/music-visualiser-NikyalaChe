@@ -2,6 +2,7 @@
 let circleX = 960;
 let circleX2 = 150;
 let circleSize;
+let circleSize2;
 
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
@@ -48,7 +49,9 @@ for (let i = 0; i < numRings; i++) {
 
 }
 
+
 if (drum > 82) { 
+  circleSize2 = drum * 8;
 
 //switch to RGB for the rings
 colorMode(RGB, 255, 255, 255);
@@ -57,9 +60,10 @@ colorMode(RGB, 255, 255, 255);
 //color changing with bass
 //let ring1 = color(255,255,254); //white 
 let ring1 = color(255, 0, 85); //warm pink 
-let ring2 = color(245, 155, 72); //light orange
+let ring2 = color(166, 220, 227); 
+//let ring2 = color(245, 155, 72); //light orange
 
-let colorDriver = map(vocal, 0, 100, 0, 1);
+let colorDriver = map(bass, 0, 100, 0, 1);
 let interColor = lerpColor(ring1, ring2, colorDriver); //middle colour between purple and pink
 
 fill(interColor)
@@ -82,7 +86,7 @@ for (let c = 0; c < corners.length; c++) {
   let x = corners[c][0];
   let y = corners[c][1];
   for (let i = 0; i < numRings2; i++) {
-    ellipse(x, y, circleSize - i * ringSpacing2);
+    ellipse(x, y, circleSize2 - i * ringSpacing2);
   }
 //ai code ended
 
