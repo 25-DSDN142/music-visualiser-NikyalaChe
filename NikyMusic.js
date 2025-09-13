@@ -19,7 +19,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
    //245, 155, 72 //light orange
    //255, 238, 110 //light yellow
 
-  //console.log(drum);
+  console.log(drum);
   circleSize = drum * 10; //drum
 
   stroke(112, 17, 74); //dark purple ring
