@@ -27,7 +27,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   push();
   translate(width/2, height/2); // Center origin
 
-if (drum > 85){
+  if (drum > 85){
   translate(random(-10, 10), random(-10, 10)); //shake effect based on drums
 }
 
@@ -45,7 +45,7 @@ firstRun = false;
 let drumSpeed = map(drum, 0, 100, 10, 60); //speed based on bass
 let starSizeBounce = map(drum, 0, 100, 1, 3); //size based on bass
 let starBrightness = map(vocal, 0, 100, 60, 100); //brightness based on bass
-let bassHue = map(bass, 0, 100, 180, 240); //ccolor hue based on bass
+let bassHue = map(bass, 0, 100, 180, 240); //color hue based on bass
 
 for (let star of stars) {
   // Move star forward based on drum
@@ -76,6 +76,9 @@ ellipse(sx, sy, r, r);
 
 }
 pop();
+
+
+
 
 //MIDDLE CIRCLE
   console.log(drum);

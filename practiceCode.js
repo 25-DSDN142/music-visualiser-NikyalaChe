@@ -1,14 +1,17 @@
 
+let stars = [];
+const numStars = 800;
+let firstRun = true;
+
 let circleX = 960;
 let circleX2 = 150;
 let circleSize;
 let circleSize2;
 
 
-
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
-   colorMode(HSB, 360, 100, 100); //make HSB color mode for smooth transitions
+  colorMode(HSB, 360, 100, 100); //make HSB color mode for smooth transitions
   
    //BACKGROUND
      // Map bass to hue (black to light blue)
@@ -17,6 +20,64 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
    let brightValue = map(bass, 0, 100, 0, 100); // brightness from black to light blue
 
    background(hueValue, satValue, brightValue); //set background colour based on the bass
+
+
+//STARFIELD 
+  push();
+  translate(width/2, height/2); // Center origin
+
+  if (drum > 85){
+  translate(random(-10, 10), random(-10, 10)); //shake effect based on drums
+}
+
+if (firstRun) {
+for (let i = 0; i < numStars; i++) {
+stars.push({
+x: random(-width/2, width/2),
+y: random(-height/2, height/2),
+z: random(width)
+});
+}
+firstRun = false;
+}
+
+let drumSpeed = map(drum, 0, 100, 10, 60); //speed based on bass
+let starSizeBounce = map(drum, 0, 100, 1, 3); //size based on bass
+let starBrightness = map(vocal, 0, 100, 60, 100); //brightness based on bass
+let bassHue = map(bass, 0, 100, 180, 240); //color hue based on bass
+
+for (let star of stars) {
+  // Move star forward based on drum
+star.z -= drumSpeed; //speed based on drum volume
+if (star.z < 1) {
+  // Reset star to far away
+star.x = random(-width/2, width/2);
+star.y = random(-height/2, height/2);
+star.z = width;
+}
+
+let sx = star.x * (width / star.z);
+let sy = star.y * (width / star.z);
+let r = map(star.z, 0, width, 8, 0.5) * starSizeBounce; // Size based on depth
+//drawing trails for the stars
+let px = star.x * (width / (star.z + drumSpeed));
+let py = star.y * (width / (star.z + drumSpeed));
+stroke(bassHue, 60, starBrightness); //star color
+strokeWeight(1);
+line(px, py, sx, sy); //trial for stars
+
+//brigthness reacts with drum
+//colorMode(HSB, 360, 100, 100);
+//let hueValue = map(drum, 0, 200, 200, 240); //blue to orange hues
+noStroke();
+fill(bassHue, 50, starBrightness); 
+ellipse(sx, sy, r, r);
+
+}
+pop();
+
+
+
 
 //MIDDLE CIRCLE
   console.log(drum);
@@ -37,7 +98,6 @@ colorMode(RGB, 255, 255, 255);
 let ring1 = color(112, 17, 74); //dark purple
 //let ring2 = color(255, 0, 85); //dark pink
 let ring2 = color(166, 227, 180); //light neon green
-
 let colorDriver = map(bass, 0, 100, 0, 1);
 let interColor = lerpColor(ring1, ring2, colorDriver); //middle colour between purple and pink
 
@@ -102,7 +162,5 @@ for (let c = 0; c < corners.length; c++) {
  }
 
 
-
 }
-
 
