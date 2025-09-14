@@ -18,8 +18,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
    background(hueValue, satValue, brightValue); //set background colour based on the bass
 
-
-   //MIDDLE CIRCLE
+//MIDDLE CIRCLE
   console.log(drum);
   circleSize = drum * 10; //drum
   
@@ -101,23 +100,6 @@ for (let c = 0; c < corners.length; c++) {
 //  ellipse(circleX2, circleX2, circleSize - i * ringSpacing2);
   }
  }
-
-//ellipse(500 + sin(counter * 2) * 100, 540, 500, 100); // moves a circle left/right over time
-  
-
-//ellipse rotating around the middle circle 
-  let angle = counter * 0.8; //rotation speed
-  let orbitRadius = circleSize / 2;
-
-  push(0);
-  translate(circleX, 540); //move origin to center
-  rotate(angle);
-
- 
-  ellipse(orbitRadius, 540, 100, 100);
-
-  pop();
-
 
 
 
