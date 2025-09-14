@@ -90,8 +90,10 @@ let lineHeight = map(other, 0, 100, 20, height / 2);
 strokeWeight(5);
 stroke(255, 238, 110); //light yellow
 line(x, 0, x, lineHeight / 2); //top to bottom
+line(x, height, x, height - lineHeight / 2);
 
-//lines from 
+
+
 
 
 
