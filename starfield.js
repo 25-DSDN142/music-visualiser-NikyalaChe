@@ -79,15 +79,19 @@ ellipse(sx, sy, r, r);
 pop();
 
 //lines from top to bottom yaxis
-let numVerticalLines = 20;
+let numVerticalLines = 50;
 let spacing = width / (numVerticalLines + 1);
-
-strokeWeight(5);
-stroke(255);
 
 for (let i = 1; i <= numVerticalLines; i++) {
 let x = spacing * i;
-line(x, 0, x, height / 2); //top to bottom
+//make line heigth react to the bass but only go halfway down the max
+let lineHeight = map(other, 0, 100, 20, height / 2);
+
+strokeWeight(5);
+stroke(255, 238, 110); //light yellow
+line(x, 0, x, lineHeight / 2); //top to bottom
+
+//lines from 
 
 
 
