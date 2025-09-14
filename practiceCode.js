@@ -60,7 +60,7 @@ colorMode(RGB, 255, 255, 255);
 //color changing with bass
 //let ring1 = color(255,255,254); //white 
 let ring1 = color(255, 0, 85); //warm pink 
-let ring2 = color(166, 220, 227); 
+let ring2 = color(166, 220, 227); //light blue
 //let ring2 = color(245, 155, 72); //light orange
 
 let colorDriver = map(bass, 0, 100, 0, 1);
