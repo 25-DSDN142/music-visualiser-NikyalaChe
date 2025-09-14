@@ -23,6 +23,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
    background(hueValue, satValue, brightValue); //set background colour based on the bass
 
 
+
 //STARFIELD 
   push();
   translate(width/2, height/2); // Center origin
