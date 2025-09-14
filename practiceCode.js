@@ -4,6 +4,8 @@ let circleX2 = 150;
 let circleSize;
 let circleSize2;
 
+
+
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
    colorMode(HSB, 360, 100, 100); //make HSB color mode for smooth transitions
@@ -16,35 +18,13 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
    background(hueValue, satValue, brightValue); //set background colour based on the bass
 
-//making a custom shape that sits behind the circles in the middle
-    push();
-    translate(circleX, 540); //positioning the drawing in the middle of the screen
 
-    noFill();
-    stroke(255, 255, 255, 50); //transparent white outline
-    strokeWeight(5);
-    
-    beginShape();
-    let points = 100; // num of points
-    let radiusBase = circleSize * 1; 
-    for (let a = 0; a < TWO_PI; a += TWO_PI / points) {
-      let offset = sin(a * 5 + counter * 0.1) * (10 + drum * 2); //wavy effect - trying this out and will change
-      let r = radiusBase + offset;
-      let x = r * cos(a);
-      let y = r * sin(a);
-      vertex(x,y);
-      
-    }
-
-    endShape(CLOSE);
-
-    pop(); 
-
-
-//MIDDLE CIRCLE
+   //MIDDLE CIRCLE
   console.log(drum);
   circleSize = drum * 10; //drum
+  
 
+//RINGS IN THE MIDDLE
   stroke(112, 17, 74); //dark purple ring
   strokeWeight(10);
   noFill();
@@ -74,10 +54,6 @@ for (let i = 0; i < numRings; i++) {
 
 
 }
-
-
-
-
 
 // CORNER CIRCLES
 if (drum > 82) { 
@@ -128,6 +104,21 @@ for (let c = 0; c < corners.length; c++) {
 
 //ellipse(500 + sin(counter * 2) * 100, 540, 500, 100); // moves a circle left/right over time
   
+
+//ellipse rotating around the middle circle 
+  let angle = counter * 0.8; //rotation speed
+  let orbitRadius = circleSize / 2;
+
+  push(0);
+  translate(circleX, 540); //move origin to center
+  rotate(angle);
+
+ 
+  ellipse(orbitRadius, 540, 100, 100);
+
+  pop();
+
+
 
 
 }
