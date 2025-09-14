@@ -8,6 +8,7 @@ let circleSize2;
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
    colorMode(HSB, 360, 100, 100); //make HSB color mode for smooth transitions
   
+   //BACKGROUND
      // Map bass to hue (black to light blue)
    let hueValue = map(bass, 0, 100, 200, 220); // blue hues
    let satValue = map(bass, 0, 100, 0, 40);    // low saturation for light blue
@@ -15,7 +16,32 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
    background(hueValue, satValue, brightValue); //set background colour based on the bass
 
+//making a custom shape that sits behind the circles in the middle
+    push();
+    translate(circleX, 540); //positioning the drawing in the middle of the screen
 
+    noFill();
+    stroke(255, 255, 255, 50); //transparent white outline
+    strokeWeight(5);
+    
+    beginShape();
+    let points = 100; // num of points
+    let radiusBase = circleSize * 1; 
+    for (let a = 0; a < TWO_PI; a += TWO_PI / points) {
+      let offset = sin(a * 5 + counter * 0.1) * (10 + drum * 2); //wavy effect - trying this out and will change
+      let r = radiusBase + offset;
+      let x = r * cos(a);
+      let y = r * sin(a);
+      vertex(x,y);
+      
+    }
+
+    endShape(CLOSE);
+
+    pop(); 
+
+
+//MIDDLE CIRCLE
   console.log(drum);
   circleSize = drum * 10; //drum
 
@@ -49,39 +75,11 @@ for (let i = 0; i < numRings; i++) {
 
 }
 
- 
-
-//making triangle rays that orbit around the middle circle
-let orbitRadius = circleSize ; //distance from the centre circle
-let numCorbitters = 8; //number of circles orbitting the middle
 
 
-for (let i = 0; i < numCorbitters; i++) {
-  let angle = counter * 1 + (TWO_PI / numCorbitters) * i; 
-  let x = circleX + cos(angle) * orbitRadius;
-  let y = 540 + sin(angle) * orbitRadius;
 
-  //triangle - Ray points 
-  //let raySize = 400; //size of triangle rays 
-  //let angleOffset = PI / 6 //rotate rays slightly 
 
-  //let x1 = x + cos(angle + angleOffset) * raySize;
-  //let y1 = y + sin(angle + angleOffset) * raySize;
-  //let x2 = x + cos(angle + angleOffset + TWO_PI / 3) * raySize
-  //let y2 = y + sin(angle + angleOffset + TWO_PI /3) * raySize;
-  //let x3 = x + cos(angle + angleOffset + 2 * TWO_PI /3) * raySize;
-  //let y3 = y + sin(angle + angleOffset + 2 * TWO_PI / 3) * raySize;
-
-  fill(255, 238, 110) //light yellow
-  stroke(245, 155, 72) //light orange
-  strokeWeight(5);
-  ellipse(x , y, 50, 50) //small cicles orbitting
-  
-  //triangle(x1, y1, x2, y2, x3, y3);
-  
-}
-
-// corner circles
+// CORNER CIRCLES
 if (drum > 82) { 
   circleSize2 = drum * 8;
 
