@@ -1,10 +1,11 @@
 // HEY! Song load at end. Warning of jumpscare
 // maybe epeilepy warning 
-
+//STARFIELD
 let stars = [];
 const numStars = 800;
 let firstRun = true;
 
+//RINGS
 let circleX = 960;
 let circleX2 = 150;
 let circleSize;
@@ -39,7 +40,7 @@ let randomVolume = [
 let lineHeight = map(randomVolume, 0, 100, 20, height / 2);
   
   strokeWeight(5);
-
+//COLOR
   if(drum < 42){
   //rainbow effect
     colorMode(HSB);
@@ -61,10 +62,11 @@ let lineHeight = map(randomVolume, 0, 100, 20, height / 2);
 }
 
 
-//STARFIELD 
+//STARFIELD - CHANGED PARTS TO MATCH WITH MY SONG BETTER
   push();
   translate(width/2, height/2); // Center origin
-
+//ADDITION
+//shake effect with drums
   if (drum > 85){
   translate(random(-10, 10), random(-10, 10)); //shake effect based on drums
 }
@@ -79,25 +81,30 @@ z: random(width)
 }
 firstRun = false;
 }
-
+//CHANGES TO STARS
 let drumSpeed = map(drum, 0, 100, 10, 60); //speed based on bass
-let starSizeBounce = map(drum, 0, 100, 1, 3); //size based on bass
-let starBrightness = map(vocal, 0, 100, 60, 100); //brightness based on bass
+let starSizeBounce = map(drum, 0, 100, 1, 8); //size based on bass
+
+//let starBrightness = map(vocal, 0, 100, 60, 100); //brightness based on bass - lighter stars
+//let starBrightness = map(vocal, 0, 100, 60, 50); //brightness based on bass - middle ground
+let starBrightness = map(vocal, 0, 100, 60, 10); //brightness based on bass - darker stars - FAVOURITE
+
 let bassHue = map(bass, 0, 100, 180, 240); //color hue based on bass
 
-for (let star of stars) {
+for (let star of stars) {     
   // Move star forward based on drum
 star.z -= drumSpeed; //speed based on drum volume
-if (star.z < 1) {
+if (star.z < 1) {             
   // Reset star to far away
 star.x = random(-width/2, width/2);
 star.y = random(-height/2, height/2);
 star.z = width;
 }
-
+//Project 3D to 2D
 let sx = star.x * (width / star.z);
 let sy = star.y * (width / star.z);
 let r = map(star.z, 0, width, 8, 0.5) * starSizeBounce; // Size based on depth
+
 //drawing trails for the stars
 let px = star.x * (width / (star.z + drumSpeed));
 let py = star.y * (width / (star.z + drumSpeed));
@@ -120,24 +127,26 @@ pop();
   console.log(drum);
   circleSize = drum * 10; //drum
   
-
-//RINGS IN THE MIDDLE
   stroke(112, 17, 74); //dark purple ring
   strokeWeight(10);
   noFill();
-
-// fill(112, 17, 74); //dark pink
 
 //switch to RGB for the rings
 colorMode(RGB, 255, 255, 255);
 
 //color changing with bass
 let ring1 = color(112, 17, 74); //dark purple
-//let ring2 = color(255, 0, 85); //dark pink
 let ring2 = color(166, 227, 180); //light neon green
 let colorDriver = map(bass, 0, 100, 0, 1);
 let interColor = lerpColor(ring1, ring2, colorDriver); //middle colour between purple and pink
 
+//OUTER GLOW RING
+let glowSize = map(bass, 0, 100, 50, 150 + drum);
+fill(red(interColor), green(interColor), blue(interColor), 80);
+noStroke();
+ellipse(circleX, 540, circleSize + glowSize * 2);
+
+//MAIN RINGS
 fill(interColor)
 stroke(ring1);
 
