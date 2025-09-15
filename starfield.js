@@ -47,8 +47,8 @@ let lineHeight = map(randomVolume, 0, 100, 20, height / 2);
   } else {
     if(drum > 42) {
     colorMode(HSB);
-    let hue = map(vocal, 0, 100, 50, 360); //orange(25), pink(320)
-    //let orange = map(vocal, 0, 100, 25, 35); //orange
+    //colour changing after drums get bigger - different from the rainbow effect
+    let hue = map(vocal, 0, 100, 50, 360); 
     let saturation = 100;
     let brightness = map(vocal, 0, 100, 70, 100);
     stroke(hue, saturation, brightness, 100);
