@@ -14,7 +14,7 @@ let circleSize2;
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
   colorMode(HSB, 360, 100, 100); //make HSB color mode for smooth transitions
   
-   //BACKGROUND
+//BACKGROUND
      // Map bass to hue (black to light blue)
    let hueValue = map(bass, 0, 100, 200, 220); // blue hues
    let satValue = map(bass, 0, 100, 0, 40);    // low saturation for light blue
@@ -23,8 +23,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
    background(hueValue, satValue, brightValue); //set background colour based on the bass
 
 
-//lines from top to bottom yaxis
-
+//LINES TOP AND BOTTOM - MIDDLE
 let numVerticalLines = 50;
 let spacing = width / (numVerticalLines + 1);
 
@@ -35,16 +34,29 @@ let x = spacing * i;
 let randomVolume = [
   drum, bass, other, vocal
 ]
-[Math.floor(Math.random()* 4)]
+[Math.floor(Math.random() * 4)]
 let lineHeight = map(randomVolume, 0, 100, 20, height / 2);
+  
+  strokeWeight(5);
 
-strokeWeight(5);
-stroke(166, 227, 180); //light yellow
-line(x, 0, x, lineHeight / 2); //top to bottom
-line(x, height, x, height - lineHeight / 2);
+  if(drum < 42){
+  //rainbow effect
+    colorMode(HSB);
+  let hue = map(i, 1, numVerticalLines, 0, 360);
+  stroke(hue, 80, 90, 80);
+  } else {
+    colorMode(HSB);
+    let orange = map(vocal, 0, 100, 25, 35); //orange
+    let saturation = 100;
+    let brightness = map(vocal, 0, 100, 70, 100);
+    stroke(orange, saturation, brightness, 100);
+  }
 
+ line(x, 0, x, lineHeight / 2); //top to bottom
+ line(x, height, x, height - lineHeight / 2);
 
 }
+
 
 //STARFIELD 
   push();
