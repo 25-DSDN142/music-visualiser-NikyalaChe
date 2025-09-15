@@ -1,5 +1,6 @@
-// HEY! Song load at end. Warning of jumpscare
-// maybe epeilepy warning 
+// HEY! Song loud at end. Warning for jumpscare
+// maybe epilepsy warning 
+
 //STARFIELD
 let stars = [];
 const numStars = 800;
@@ -50,8 +51,8 @@ let lineHeight = map(randomVolume, 0, 100, 20, height / 2);
     if(drum > 42) {
     colorMode(HSB);
     //colour changing after drums get bigger - different from the rainbow effect
-    let hue = map(vocal, 0, 100, 50, 360); 
-    let saturation = 100;
+    let hue = map(vocal, 0, 100, 50, 360); //changing color between yellow/green and red
+    let saturation = 100; //vivid colors
     let brightness = map(vocal, 0, 100, 70, 100);
     stroke(hue, saturation, brightness, 100);
   }
@@ -106,6 +107,7 @@ let sy = star.y * (width / star.z);
 let r = map(star.z, 0, width, 8, 0.5) * starSizeBounce; // Size based on depth
 
 //drawing trails for the stars
+//giving them x,y points = px, py
 let px = star.x * (width / (star.z + drumSpeed));
 let py = star.y * (width / (star.z + drumSpeed));
 stroke(bassHue, 60, starBrightness); //star color
