@@ -137,7 +137,7 @@ fill(red(interColor), green(interColor), blue(interColor), 80);
 noStroke();
 ellipse(circleX, 540, circleSize + glowSize * 2);
 
-//mian Rings
+//main Rings
 fill(interColor)
 stroke(ring1);
 
