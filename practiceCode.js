@@ -13,13 +13,50 @@ let circleSize2;
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
   colorMode(HSB, 360, 100, 100); //make HSB color mode for smooth transitions
   
-   //BACKGROUND
+//BACKGROUND
      // Map bass to hue (black to light blue)
    let hueValue = map(bass, 0, 100, 200, 220); // blue hues
    let satValue = map(bass, 0, 100, 0, 40);    // low saturation for light blue
    let brightValue = map(bass, 0, 100, 0, 100); // brightness from black to light blue
 
    background(hueValue, satValue, brightValue); //set background colour based on the bass
+
+
+//LINES TOP AND BOTTOM - MIDDLE
+let numVerticalLines = 50;
+let spacing = width / (numVerticalLines + 1);
+
+for (let i = 1; i <= numVerticalLines; i++) {
+let x = spacing * i;
+
+//created an array that holds the different values - then uses math to randomly select a volume from the array
+let randomVolume = [
+  drum, bass, other, vocal
+]
+[Math.floor(Math.random() * 4)]
+let lineHeight = map(randomVolume, 0, 100, 20, height / 2);
+  
+  strokeWeight(5);
+
+  if(drum < 42){
+  //rainbow effect
+    colorMode(HSB);
+  let hue = map(i, 1, numVerticalLines, 0, 360);
+  stroke(hue, 80, 90, 80);
+  } else {
+    if(drum > 42) {
+    colorMode(HSB);
+    //colour changing after drums get bigger - different from the rainbow effect
+    let hue = map(vocal, 0, 100, 50, 360); 
+    let saturation = 100;
+    let brightness = map(vocal, 0, 100, 70, 100);
+    stroke(hue, saturation, brightness, 100);
+  }
+  }
+ line(x, 0, x, lineHeight / 2); //top to bottom
+ line(x, height, x, height - lineHeight / 2);
+
+}
 
 
 //STARFIELD 
@@ -77,30 +114,30 @@ ellipse(sx, sy, r, r);
 pop();
 
 
-
-
 //MIDDLE CIRCLE
   console.log(drum);
   circleSize = drum * 10; //drum
   
-
-//RINGS IN THE MIDDLE
   stroke(112, 17, 74); //dark purple ring
   strokeWeight(10);
   noFill();
-
-// fill(112, 17, 74); //dark pink
 
 //switch to RGB for the rings
 colorMode(RGB, 255, 255, 255);
 
 //color changing with bass
 let ring1 = color(112, 17, 74); //dark purple
-//let ring2 = color(255, 0, 85); //dark pink
 let ring2 = color(166, 227, 180); //light neon green
 let colorDriver = map(bass, 0, 100, 0, 1);
 let interColor = lerpColor(ring1, ring2, colorDriver); //middle colour between purple and pink
 
+//outer glow ring
+let glowSize = map(bass, 0, 100, 50, 150 + drum);
+fill(red(interColor), green(interColor), blue(interColor), 80);
+noStroke();
+ellipse(circleX, 540, circleSize + glowSize * 2);
+
+//mian Rings
 fill(interColor)
 stroke(ring1);
 
