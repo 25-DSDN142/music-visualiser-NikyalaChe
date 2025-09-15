@@ -45,13 +45,15 @@ let lineHeight = map(randomVolume, 0, 100, 20, height / 2);
   let hue = map(i, 1, numVerticalLines, 0, 360);
   stroke(hue, 80, 90, 80);
   } else {
+    if(drum > 42) {
     colorMode(HSB);
-    let orange = map(vocal, 0, 100, 25, 35); //orange
+    let hue = map(vocal, 0, 100, 50, 360); //orange(25), pink(320)
+    //let orange = map(vocal, 0, 100, 25, 35); //orange
     let saturation = 100;
     let brightness = map(vocal, 0, 100, 70, 100);
-    stroke(orange, saturation, brightness, 100);
+    stroke(hue, saturation, brightness, 100);
   }
-
+  }
  line(x, 0, x, lineHeight / 2); //top to bottom
  line(x, height, x, height - lineHeight / 2);
 
